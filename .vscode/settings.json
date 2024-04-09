@@ -1,0 +1,10 @@
+{
+    "files.associations": {
+        "random": "cpp",
+        "string_view": "cpp",
+        "initializer_list": "cpp",
+        "variant": "cpp",
+        "algorithm": "cpp"
+    },
+    "C_Cpp.errorSquiggles": "enabled"
+}
