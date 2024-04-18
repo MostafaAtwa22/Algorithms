@@ -1,4 +1,5 @@
 #include <iostream>
+#include <algorithm>
 using namespace std;
 
 int partitioning_min(int arr[] , int left , int right);
@@ -59,41 +60,23 @@ void Quick_sort_min(int arr[], int l, int r)
 
 int partitioning_max(int arr[], int left, int right)
 {
-  int i = left;
-  int j = right;
-	int pivLoc = i;
-
-	while (true)
+	int pivot = arr[right];
+	int i = left - 1;
+	for (int j = left; j < right; j++)
 	{
-		while (arr[pivLoc] > arr[j] && pivLoc != j)
-		{
-			j--;
-		}
-
-		if (pivLoc == j)
-			break;
-
-		else if (arr[pivLoc] <= arr[j])
-		{
-			swap(arr[j], arr[pivLoc]);
-			pivLoc = j;
-		}
-
-		while (arr[pivLoc] <= arr[i] && pivLoc != i)
+		if (pivot < arr[j])
 		{
 			i++;
-		}
-        
-		if (pivLoc == i)
-			break;
-
-		else if (arr[pivLoc] > arr[i])
-		{
-			swap(arr[i], arr[pivLoc]);
-			pivLoc = i;
+			int tmp = arr[i];
+			arr[i] = arr[j];
+			arr[j] = tmp;
 		}
 	}
-	return pivLoc;
+	i++;
+	int tmp = arr[i];
+	arr[i] = arr[right];
+	arr[right] = tmp;
+	return i;
 }
 
 void Quick_sort_max(int arr[] , int left , int right)
