@@ -1,35 +1,83 @@
-#include <iostream>
+#include<iostream>
+#include<algorithm>
 using namespace std;
 
-int count[100];
-int sorted[100];
+const int N = 2e5;
 
-void sort(int arr[] , int n)
+void countingSort(int arr[], int n, int Max)
 {
-    for (int i = n - 1; i >= 0; i--)
-        sorted[--count[arr[i]]] = arr[i];
-}
+    int count[N] = {0}; // Initialize count array with zeros
 
-void print (int n)
-{
     for (int i = 0; i < n; i++)
-        cout << sorted[i] << ' ';
+    {
+        count[arr[i]]++;
+    }
+
+    int j = 0;
+    for(int i = 0; i <= Max; i++)
+    {
+        while (count[i]--)
+        {
+            arr[j++] = i;
+        }
+    }
 }
+
+void SortWithNeg(int arr[], int n, int Min, int Max)
+{
+    int count[Max - Min + 1] = {0};
+    for (int i = 0; i < n; i++)
+        count[arr[i] - Min]++;
+    int j = 0;
+    for (int i = 0; i <= Max - Min; i++)
+    {
+        while (count[i]--)
+        {
+            arr[j++] = i + Min;
+        }
+    }
+}
+
+void print(int arr[], int n)
+{
+    cout << "Array: [ ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << "]\n";
+}
+
 int main()
 {
     int size;
-    cout << "Enter a size : ";
+    cout << "Enter size of array: ";
     cin >> size;
 
+    int Max = -N;
     int arr[size];
-    for (int i = 0; i < size; i++)  
+    for (int i = 0; i < size; i++)
     {
         cin >> arr[i];
-        count[arr[i]]++;
+        Max = max(Max, arr[i]);
     }
-    for (int i = 1; i < 100; i++)
-        count[i] += count[i - 1];
-    
-    sort(arr , size);
-    print(size);
-} 
+
+    countingSort(arr, size, Max);
+    print(arr, size);
+
+    int n;
+    cout << "Enter the size : ";
+    cin >> n;
+    cout << "Enter the element (Negative Value is allowed) !!\n";
+    int a[n];
+    int MIN = INT_MAX;
+    int MAX = INT_MIN;
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+        MIN = min(MIN, a[i]);
+        MAX = max(MAX, a[i]);
+    }
+    SortWithNeg(a, n, MIN, MAX);
+    print(a, n);
+}
