@@ -5,26 +5,27 @@ using namespace std;
 
 int algorithm (int files[] , int n)
 {
-    // use the min heap to get the smallest size of files every time for merging
-    priority_queue <int , vector <int> , greater <int>> min_files;
-    // first push all the files's size to the pq
-    for (int i = 0; i < n; i++)
-        min_files.push (files[i]);
-    // to get the min coast of merging
-    int coast = 0;
-    while (min_files.size () > 1)
+    // we will use PQ with min heap 
+    priority_queue<int, vector<int>, greater<>> MinFileSize;
+    for(int i = 0; i < n; i++)
+        MinFileSize.push(files[i]);
+    // get the min coast of combine 2 files
+    int optimalSol = 0;
+    // merge utill the size become 1
+    while (MinFileSize.size() > 1)
     {
-        // get the smallest files and merge them
-        int first = min_files.top ();
-        min_files.pop ();
-        int second = min_files.top ();
-        min_files.pop ();
-        int sum = first + second; 
-        coast += sum;
-        // and push the new merged file to the pq again 
-        min_files.push (sum);
+        // get the first 2 min
+        int Min1 = MinFileSize.top();
+        MinFileSize.pop();
+        int Min2 = MinFileSize.top();
+        MinFileSize.pop();
+        // add merge operation sum to optimal solution
+        int sum = Min1 + Min2;
+        optimalSol += sum;
+        // add the new merged files
+        MinFileSize.push(sum);
     }
-    return coast;
+    return optimalSol;
 }
 
 int main ()

@@ -11,7 +11,8 @@
         "format": "cpp",
         "vector": "cpp",
         "xstring": "cpp",
-        "span": "cpp"
+        "span": "cpp",
+        "queue": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }
