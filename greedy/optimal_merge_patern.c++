@@ -3,6 +3,9 @@
 #include <vector> 
 using namespace std;
 
+/* in this problem we have size of linked list and we want to merge them with min coast */
+/* problem link (explaining) : https://youtu.be/HHIc5JZyenI */
+
 int algorithm (int files[] , int n)
 {
     // we will use PQ with min heap 
