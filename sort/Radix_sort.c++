@@ -5,8 +5,10 @@
 using namespace std;
 
 /**
- * Time  : O(N)
- * Space : O()
+ * Time  : O(N*K)
+ * Space : O(N + K)
+ * N => size of array
+ * K => max number of Digits
  * deals with int only
 */
 
