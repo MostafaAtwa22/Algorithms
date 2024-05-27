@@ -2,6 +2,10 @@
 #include<algorithm>
 using namespace std;
 
+/**
+ * Time  : O(N)
+ * Space : O(N)
+*/
 const int N = 2e5;
 
 void countingSort(int arr[], int n, int Max)

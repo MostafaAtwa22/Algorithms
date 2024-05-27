@@ -3,6 +3,10 @@
 #include <algorithm>
 using namespace std;
 
+/**
+ * Time  : O(NlogN)
+ * Space : O(N)
+*/
 template<typename T>
 void merge(vector<T> & leftArray, vector<T> & rightArray, vector<T> & a)
 {

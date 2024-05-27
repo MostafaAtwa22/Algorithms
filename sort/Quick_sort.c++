@@ -2,6 +2,10 @@
 #include <algorithm>
 using namespace std;
 
+/**
+ * Time  : O(NlogN)
+ * Space : O(1)
+*/
 int partitioning_min(int arr[] , int left , int right);
 void Quick_sort_min(int arr[] , int left , int right);
 int partitioning_max(int arr[] , int left , int right);

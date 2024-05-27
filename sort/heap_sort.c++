@@ -1,6 +1,10 @@
 #include <iostream>
 using namespace std;
 
+/**
+ * Time  : O(NlogN)
+ * Space : O(1)
+*/
 void heapify_max(int arr[] , int size , int pos);
 void heap_build_max(int arr[] , int size);
 void Heap_sort_min(int arr[] , int size);

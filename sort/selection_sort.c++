@@ -5,6 +5,7 @@ using namespace std;
 * Time  : O(n^2)
 * Space : O(1)
 */
+
 template <typename T>
 void min_sort(T arr[], int size);
 
