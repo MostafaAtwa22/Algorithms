@@ -10,8 +10,8 @@ using namespace std;
 template<typename T>
 void merge(vector<T> & leftArray, vector<T> & rightArray, vector<T> & a)
 {
-    int leftSize = a.size() / 2;
-    int rightSize = a.size() - leftSize;
+    int leftSize = leftArray.size();
+    int rightSize = rightArray.size();
     int l = 0, r = 0, i = 0; // indices of the merging 
 
     while (l < leftSize && r < rightSize)
@@ -34,7 +34,7 @@ void merge(vector<T> & leftArray, vector<T> & rightArray, vector<T> & a)
 }
 
 template<typename T>
-void sort(vector<T> & a)
+void MergeSort(vector<T> & a)
 {
     int size = a.size();
     if (size <= 1)
@@ -52,8 +52,8 @@ void sort(vector<T> & a)
         else 
             rightArray[j++] = a[i];
     }
-    sort(leftArray);
-    sort(rightArray);
+    MergeSort(leftArray);
+    MergeSort(rightArray);
     merge(leftArray, rightArray, a);
 }
 
@@ -75,6 +75,6 @@ int main()
     cout << "Enter the Array Elements !!!\n";
     for (auto &i : a)
         cin >> i;
-    sort(a);
+    MergeSort(a);
     print(a);
 }
