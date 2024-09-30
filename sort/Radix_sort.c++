@@ -43,7 +43,7 @@ void InsertOnArrayDigits(int a[], int size, int digit)
 void InsertAfterArrayDigits(int a[])
 {
     int i = 0;
-    for (int j = 0; j <= 10; j++)
+    for (int j = 0; j < 10; j++)
     {
         for (auto k : ArrayDigits[j])
             a[i++] = k;

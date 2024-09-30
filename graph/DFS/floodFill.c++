@@ -4,27 +4,31 @@
 
 using namespace std;
 
-const int N = 1e5 + 2;
-
 char grid[100][100];
 bool vis[100][100];
 int n, m;
 
-bool in (int i, int j)
+
+int dx[4] = {0, 0, 1, -1};
+int dy[4] = {1, -1, 0, 0};
+
+bool valid (int i, int j)
 {
     return i >= 1 && i <= n && j >= 1 && j <= m;
 }
-void dfs (int i, int j)
+
+void dfs(int curx, int cury)
 {
-    vis[i][j] = 1;
-    if (grid[i][j] == '.' && !vis[i][j] && in (i, j))
+    vis[curx][cury] = 1;
+    for (int i = 0; i < 4; i++)
     {
-        dfs (i, j + 1);
-        dfs (i, j - 1);
-        dfs (i + 1, j);
-        dfs (i - 1, j);
+        int nx = curx + dx[i];
+        int ny = cury + dy[i];
+        if (valid(nx, ny) && grid[nx][ny] == '.' && !vis[nx][ny])
+        {
+            dfs(nx, ny);
+        }
     }
-    return;
 }
 
 int main (void)

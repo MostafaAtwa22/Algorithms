@@ -7,42 +7,41 @@ using namespace std;
 const int N = 1e5 + 2;
 
 vector <int> graph[N];
-bool visited[N], instack [N];
+bool visitedUnDir[N];
+int visitedDir[N];
 
-bool dfs (int node)
+bool dfsDir (int node)
 {
-    visited[node] = 1;
-    instack[node] = 1;
+    visitedDir[node] = 1;
+    bool res = false;
     for (auto child : graph[node])
     {
-        if (!visited[child])
-            if (dfs (child))
-                return true;
-        // because it visited and the node in the stack
-        else if (instack[child])
+        if (visitedDir[child] == 1)
             return true;
+        else if (visitedDir[child] == 0)
+            res |= dfsDir(child);
     }
-    instack[node] = 0;
-    return false;
+    visitedDir[node] = 2;
+    return res;
 }
 
-bool dfsDir (int node, int p)
+bool dfsUnDir (int node, int p)
 {
-    visited[node] = 1;
+    visitedUnDir[node] = 1;
+    bool res = false;
     for (auto child : graph[node])
     {
-        if (!visited[child])
-        {
-            if (dfsDir (child, node))
-                return 1;
-        }
-        else if (child != p)
-            return 1;
+        if (child == p)
+            continue;
+        if (visitedUnDir[child])
+            return true;
+        else
+            res |= dfsUnDir(child, node);
     }
-    return 0;
+    return res;
 }
 
-int main (void)
+int main ()
 {
     cout << "Enter the number of nodes : ";
     int n;
@@ -58,6 +57,6 @@ int main (void)
         graph[u].push_back (v);
         graph[v].push_back (u); // undirected graph
     }
-    (dfs (1)) ? cout << "Cycle !\n" : cout << "Not Cycle !\n";
-    (dfsDir (1, -1)) ? cout << "Cycle !\n" : cout << "Not Cycle !\n";
+    (dfsDir (1)) ? cout << "Cycle !\n" : cout << "Not Cycle !\n";
+    (dfsUnDir (1, -1)) ? cout << "Cycle !\n" : cout << "Not Cycle !\n";
 } 

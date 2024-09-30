@@ -12,7 +12,8 @@
         "vector": "cpp",
         "xstring": "cpp",
         "span": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "string": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled"
 }

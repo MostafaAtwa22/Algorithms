@@ -8,17 +8,17 @@ const int N = 1e5 + 2;
 
 vector <int> graph[N];
 vector <int> path;
-bool visit[N];
+bool visited[N];
 int parent[N];
 int depth[N];
 int degree[N];
 
 void dfs (int node)
 {
-    visit[node] = 1;
+    visited[node] = 1;
     for (auto child : graph[node])
     {
-        if (!visit[child])
+        if (!visited[child])
         {
             parent[child] = node;
             depth[child] = depth[node] + 1;
@@ -53,11 +53,12 @@ int main()
         degree[u]++, degree[v]++;
     }
 
+    // that's mean how may time i make dfs
     cout << "The # of connected components int the graph : ";
     int counter = 0;
     for (int i = 1; i <= n; i++)
     {
-        if (!visit[i])
+        if (!visited[i])
         {
             counter++;
             dfs (i);

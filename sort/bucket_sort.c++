@@ -12,7 +12,7 @@ using namespace std;
 const int N = 1e5;
 vector<long double> bucket[N];
 
-void bucketSort(vector<long double> & a, int MinElement, int MaxElement)
+void bucketSort(vector<long double> & a, long MinElement, int MaxElement)
 {
     int j = 0;
     for (int i = MinElement; i <= MaxElement; i++)
@@ -32,10 +32,11 @@ void print(vector<long double> & a)
         cout << i << ' ';
     cout << "]\n";
 }
+
 int main()
 {
     int n;
-    int MaxElement = 0;
+    int MaxElement = INT_MIN;
     int MinEleemnt = INT_MAX;
     cout << "Enter the size : ";
     cin >> n;
