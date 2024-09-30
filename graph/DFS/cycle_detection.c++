@@ -16,12 +16,12 @@ bool dfsDir (int node)
     bool res = false;
     for (auto child : graph[node])
     {
-        if (visitedDir[child] == 1)
+        if (visitedDir[child] == 1) // visit it and there is a loop
             return true;
-        else if (visitedDir[child] == 0)
+        else if (visitedDir[child] == 0) // it's not visited yet
             res |= dfsDir(child);
     }
-    visitedDir[node] = 2;
+    visitedDir[node] = 2; // visit and finish the DFS of it
     return res;
 }
 
