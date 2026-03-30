@@ -4,7 +4,7 @@ using namespace std;
 
 const int N = 1e5 + 2;
 vector <int> graph[N];
-int matrix[N][N];
+bool matrix[N][N];
 
 int main()
 {
@@ -19,8 +19,11 @@ int main()
     {
         int u, v;
         cin >> u >> v;
+        // Adj List
         graph[u].push_back (v);
         graph[v].push_back (u); // undirected graph
+
+        // Adj Matrix
         matrix[u][v] = 1;
         matrix[v][u] = 1;       // undirected graph
     }

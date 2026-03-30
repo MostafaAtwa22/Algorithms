@@ -36,9 +36,9 @@ void knapsack (int profits[] , int weights[] , int n , int capasity)
     int MaxProfite = 0, MaxWeight = 0;
     for (int i = 0; i < n; i++)
     {
-        // if the bag can't take more
+        // if the bag can't take this one
         if (capasity < bestProfite[i].second.second)
-            break;
+            continue;
         else
         {
             MaxProfite += bestProfite[i].second.first;
