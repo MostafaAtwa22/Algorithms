@@ -43,4 +43,10 @@ int main()
         }
         cout << endl;
     }
+    for (int i = 0; i < V; i++) {
+        if (dist[i][j] < 0) {
+            cout << "Negative cycle\n";
+            return 0;
+        }
+    }
 } 
